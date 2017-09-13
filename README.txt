@@ -20,6 +20,9 @@ SOFTWARE DEBUGGING - UDACITY
 
 
 
+BEGINNERS GUIDE TO TEST DRIVEN DEVELOPMENT - UDEMY 
+
+
 WEB TESTING 
 ———————————
 
@@ -48,14 +51,152 @@ EXTENTREPORTS-STUNNING HTML REPORTS FOR APPIUM & SELENIUM - UDEMY
 
 SELENIUM WEBDRIVER AND PYTHON: WEBTEST AUTOMATION COURSE - UDEMY
 
-TEST WITH SPRING - PETRI KAINULAINEN
-
 TEST AUTOMATION OF THE REST SERVICES - UDEMY
 
 
 
 JAVA CODE GEEKS TUTORIALS
 
+
+CUCUMBER SPRING INTEGRATION - BAELDUNG 
+
+TESTING SPRING BATCH APPLICATION - CODECENTRIC.DE
+
+
+
+—————————————————————————————————————
+TEST WITH SPRING - PETRI KAINULAINEN
+—————————————————————————————————————
+
+
+
+
+
+
+
+
+
+
+
+
+
+===============================================================================
+===============================================================================
+
+
+——————————————————————————————————
+SPRING TESTING - PETRI KAINULAINEN
+——————————————————————————————————
+
+
+—————————————————————————————————————————————————————————————————————————————————
+
+SPRING MVC TEST
+———————————————
+
+
+UNIT TESTING 
+————————————
+
+
+UNIT TESTING OF SPRING MVC CONTROLLERS: CONFIGURATION
+
+UNIT TESTING OF SPRING MVC CONTROLLERS: “NORMAL” CONTROLLERS 
+
+UNIT TESTING OF SPRING MVC CONTROLLERS: REST API 
+
+
+INTEGRATION TESTING 
+———————————————————
+
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: CONFIGURATION 
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: CONTROLLERS 
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: FORMS 
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: REST API, PART ONE
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: REST API, PART TWO 
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: SECURITY
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: MIGRATING TO SPRING 3.2 
+
+INTEGRATION TESTING OF SPRING MVC APPLICATIONS: WRITE CLEAN ASSERTIONS WITH JSONPATH 
+—————————————————————————————————————————————————————————————————————————————————
+
+
+
+
+
+
+
+—————————————————————————————————————————————————————————————————————————————————
+WRITING TESTS FOR DATA ACCESS CODE
+——————————————————————————————————
+
+UNIT TESTS ARE WASTE 
+
+GREEN BUILD IS NOT GOOD ENOUGH 
+
+DON’T TEST THE FRAMEWORK 
+
+DON’T FORGET THE DATABASE 
+
+DATA MATTERS 
+—————————————————————————————————————————————————————————————————————————————————
+
+
+
+
+—————————————————————————————————————————————————————————————————————————————————
+WRITING CLEAN TESTS
+———————————————————
+
+THREE REASONS WHY WE SHOULD NOT USE INHERITANCE IN OUR TESTS
+
+IT STARTS FROM THE CONFIGURATION 
+
+NAMING MATTERS 
+
+BEWARE OF MAGIC 
+
+NEW CONSIDERED HARMFUL
+
+REPLACE ASSERTIONS WITH A DOMAIN-SPECIFIC LANGUAGE 
+
+DIVIDE AND CONQUER
+
+TO VERIFY OR NOT TO VERIFY 
+
+TROUBLE IN PARADISE 
+
+SMALL IS BEAUTIFUL 
+
+JAVA 8 TO THE RESCUE 
+—————————————————————————————————————————————————————————————————————————————————
+
+===============================================================================
+===============================================================================
+
+
+
+
+
+
+————————————————————————————————————————————————————————————————————————————————
+SPRING MVC TEST TUTORIAL -  PETRI KAINULAINEN <HTTPS://WWW.PETRIKAINULAINEN.NET>
+
+WRITING TESTS FOR DATA ACCESS CODE -  PETRI KAINULAINEN <HTTPS://WWW.PETRIKAINULAINEN.NET>
+
+WRITING CLEAN TESTS -  PETRI KAINULAINEN <HTTPS://WWW.PETRIKAINULAINEN.NET>
+
+LEARN ABOUT INTEGRATION TESTING IN JAVA 
+
+LEARN TDD WITH SPRING 
+————————————————————————————————————————————————————————————————————————————————
 
 
 
@@ -71,3 +212,4 @@ EXPECTED TO SEE THE IOC CONTAINER BE USED FOR CLASS INSTANTIATION, NOT POPULATIO
 THE TESTS NEED NOT BE OVERLY VERBOSE 
 
 SHOULD USE THE @BEFORE METHOD TO SETUP THE BASE OF THE TESTS
+
