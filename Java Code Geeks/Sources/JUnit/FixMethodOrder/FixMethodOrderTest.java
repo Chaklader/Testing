@@ -40,7 +40,11 @@ import org.junit.Test;
 
 
 
+<<<<<<< HEAD
 @FixMethodOrder(MethodSorters.NAMEASCENDING)
+=======
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+>>>>>>> c709250ca684c5f395f29796d3b7d8d605f163ba
 class FixMethodOrderTest {
 
     @Test
