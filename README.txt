@@ -178,8 +178,6 @@ JAVA 8 TO THE RESCUE
 
 
 
-=======
->>>>>>> c709250ca684c5f395f29796d3b7d8d605f163ba
 ————————————————————————————————————————————————————————————————————————————————
 SPRING MVC TEST TUTORIAL -  PETRI KAINULAINEN <HTTPS://WWW.PETRIKAINULAINEN.NET>
 
