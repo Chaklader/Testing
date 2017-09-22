@@ -216,3 +216,10 @@ THE TESTS NEED NOT BE OVERLY VERBOSE
 
 SHOULD USE THE @BEFORE METHOD TO SETUP THE BASE OF THE TESTS
 
+
+
+
+
+=============================================================
+LEARN PROPER TESTING READING THE CODE FROM THE EUGEN BAELDUNG
+=============================================================
