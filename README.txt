@@ -102,6 +102,7 @@ MOCKITO VERIFY COOKBOOK
 
 
 
+<<<<<<< HEAD
 INDEPENDENT VENDOR COURSES 
 ——————————————————————————
 
@@ -110,11 +111,18 @@ TEST WITH SPRING - PETRI KAINULAINEN
 INTRODUCTION TO SPOCK FRAMEWORK - PETRI
 
 TESTING WITH THE TO SPOCK FRAMEWORK - PETRI
+=======
+
+—————————————————————————————————————
+TEST WITH SPRING - PETRI KAINULAINEN
+—————————————————————————————————————
+>>>>>>> 2eee9de474b6807543c46dbc9431681d62c970cb
 
 
 
 
 
+<<<<<<< HEAD
 
 
 SPRING TESTING - PETRI
@@ -124,6 +132,21 @@ SPRING TESTING - PETRI
 
 SPRING MVC TEST SERIES 
 ——————————————————————
+=======
+===============================================================================
+===============================================================================
+
+
+——————————————————————————————————
+SPRING TESTING - PETRI KAINULAINEN
+——————————————————————————————————
+
+
+—————————————————————————————————————————————————————————————————————————————————
+
+SPRING MVC TEST
+———————————————
+>>>>>>> 2eee9de474b6807543c46dbc9431681d62c970cb
 
 
 UNIT TESTING 
@@ -164,9 +187,15 @@ INTEGRATION TESTING OF SPRING MVC APPLICATIONS: WRITE CLEAN ASSERTIONS WITH JSON
 
 
 
+<<<<<<< HEAD
 
 WRITING TESTS FOR DATA ACCESS CODE SERIES
 —————————————————————————————————————————
+=======
+—————————————————————————————————————————————————————————————————————————————————
+WRITING TESTS FOR DATA ACCESS CODE
+——————————————————————————————————
+>>>>>>> 2eee9de474b6807543c46dbc9431681d62c970cb
 
 UNIT TESTS ARE WASTE 
 
@@ -177,14 +206,24 @@ DON’T TEST THE FRAMEWORK
 DON’T FORGET THE DATABASE 
 
 DATA MATTERS 
+<<<<<<< HEAD
+=======
+—————————————————————————————————————————————————————————————————————————————————
+>>>>>>> 2eee9de474b6807543c46dbc9431681d62c970cb
 
 
 
 
+<<<<<<< HEAD
 
 
 WRITING CLEAN TESTS SERIES
 ——————————————————————————
+=======
+—————————————————————————————————————————————————————————————————————————————————
+WRITING CLEAN TESTS
+———————————————————
+>>>>>>> 2eee9de474b6807543c46dbc9431681d62c970cb
 
 THREE REASONS WHY WE SHOULD NOT USE INHERITANCE IN OUR TESTS
 
@@ -209,6 +248,12 @@ SMALL IS BEAUTIFUL
 JAVA 8 TO THE RESCUE 
 —————————————————————————————————————————————————————————————————————————————————
 
+<<<<<<< HEAD
+=======
+===============================================================================
+===============================================================================
+
+>>>>>>> 2eee9de474b6807543c46dbc9431681d62c970cb
 
 
 
