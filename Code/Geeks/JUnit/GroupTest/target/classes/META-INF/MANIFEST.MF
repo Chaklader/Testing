@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Built-By: VINOD KASHYAP
-<<<<<<< HEAD
-Build-Jdk: 1.8.0101
-=======
-Build-Jdk: 1.8.0_101
->>>>>>> c709250ca684c5f395f29796d3b7d8d605f163ba
-Created-By: Maven Integration for Eclipse
-

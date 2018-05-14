@@ -15,6 +15,25 @@ import org.mockito.invocation.Invocation;
 import org.mockito.verification.VerificationMode;
 
 
+/*
+* Write a customized verification method 
+* (i.e. namely first) with the Mockito
+*/
+
+
+/* VerificationMode: class or extension which is used to verify that the mock 
+* invocations we are interested in happend correctly.
+*
+* InvocationsFinder: will return a list of all invocations with the mock of interest.
+*
+* InvocationMarker: can be used to mark the mock invocation as verified.
+* 
+* Reporter: exposes a number of shortcut methods for throwing various VerificationFailure
+* errors.
+* 
+* InvocationMatcher: is used in conjunction with  InvocationsMarker  to find the desired 
+* Invocations if they happened.
+*/
 public class First implements VerificationMode {
 	
 
@@ -26,6 +45,16 @@ public class First implements VerificationMode {
 		return new First();
 	}
 
+
+	/*In the verify method we will find all matching invocations and verify 
+	two things:
+
+	i. The invocation we wanted actually happened, if it did not we will use 
+	Reporter to throw a “wanted but not invoked” error.
+
+	ii. The invocation we wanted was the first invocation on the Mock, if it 
+	was not we will throw a new exception with an appropriate message detailing 
+	the expected invocation and the actual one.*/
 	@Override
 	public void verify(VerificationData data) {
 
@@ -49,7 +78,9 @@ public class First implements VerificationMode {
 			return true;			
 		}	
 		
-		return left.getMock().equals(right.getMock()) && left.getMethod().equals(right.getMethod()) && Arrays.equals(left.getArguments(), right.getArguments());
+		return left.getMock().equals(right.getMock()) 
+					&& left.getMethod().equals(right.getMethod()) 
+					&& Arrays.equals(left.getArguments(), right.getArguments());
 	}
 	
 	private void reportNotFirst(Invocation wanted, Invocation unwanted) {

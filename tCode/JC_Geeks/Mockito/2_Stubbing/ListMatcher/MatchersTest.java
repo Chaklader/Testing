@@ -16,6 +16,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+
+
 @RunWith(MockitoJUnitRunner.class)
 public class MatchersTest {
 
@@ -41,6 +43,7 @@ public class MatchersTest {
 	@Test
 	public void test() {
 		
+
 		// default behaviour is to return false
 		assertFalse(test.usesString("Hello"));
 		
@@ -71,14 +74,17 @@ public class MatchersTest {
 		assertFalse(test.usesObjects("Hi World", new Object(), 360));
 		assertTrue(test.usesObjects("Hello World", new Object(), 360));
 		Mockito.reset(test);
+
 		
 		when(test.usesString(startsWith("Hello"))).thenReturn(true);
 		assertTrue(test.usesString("Hello there"));
 		Mockito.reset(test);
+
 		
 		when(test.usesString(endsWith("something"))).thenReturn(true);
 		assertTrue(test.usesString("isn't that something"));
 		Mockito.reset(test);
+
 		
 		when(test.usesString(contains("second"))).thenReturn(true);
 		assertTrue(test.usesString("first, second, third."));

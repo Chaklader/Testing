@@ -39,13 +39,15 @@ import org.junit.runners.model.Statement;
  * @since 4.7
  */
 public abstract class JUnitRules implements TestRule {
-    
+
     public Statement apply(Statement base, Description description) {
         return statement(base);
     }
 
     private Statement statement(final Statement base) {
+
         return new Statement() {
+
             @Override
             public void evaluate() throws Throwable {
                 before();
@@ -84,4 +86,7 @@ public abstract class JUnitRules implements TestRule {
     protected void after() throws Throwable {
         // do nothing
     }
+
 }
+
+

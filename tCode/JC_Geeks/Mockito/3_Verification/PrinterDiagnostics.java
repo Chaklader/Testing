@@ -15,7 +15,10 @@ public class PrinterDiagnostics {
 		diagnostic.append("*** Collate: ").append(collate).append(" ***\n");
 		diagnostic.append("********************\n\n");
 		
-		printer.print(new StringBuilder().append(diagnostic).append(text).toString(), copies, collate);
+		printer.print(new StringBuilder()
+						.append(diagnostic)
+						.append(text)
+						.toString(), copies, collate);
 	}
 	
 	public void diagnosticAndOriginalPrint(String text, Integer copies, Boolean collate) {

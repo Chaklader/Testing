@@ -19,6 +19,7 @@ public class ListContainsMatcher<T> extends ArgumentMatcher<List<T>> {
 
 		@SuppressWarnings("unchecked")
 		List<T> list = (List<T>) argument;
+
 		return list.contains(element);
 	}
 	

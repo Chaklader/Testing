@@ -70,7 +70,7 @@ public class CustomerDAOTest {
 
 
 	@Test
-	public void findingexistingcustomershouldreturncustomer() throws Exception {
+	public void finding_existing_customer_should_return_customer() throws Exception {
 
 		// Given
 		long expectedId = 10L;
@@ -111,9 +111,11 @@ public class CustomerDAOTest {
 		// Then
 		assertFalse(actualCustomer.isPresent());
 	}
+
 	
 	@Test
 	public void invokingmockwithdifferentargumentreturnsdifferentcustomers() throws Exception {
+
 		// Given
 		long expectedId1 = 10L;
 		String expectedName1 = "John Doe";
@@ -266,9 +268,11 @@ public class CustomerDAOTest {
 	
 	@Test
 	public void updatingcustomershouldresultinlatestversionfromdbbeingreturned() throws Exception {
+
 		// Given
 		Customer inputCustomer = new Customer (10L, "Input", "My Address");
 		Customer outputCustomer = new Customer (10L, "Output", "My Address");
+
 		given(mockEntityManager.merge(inputCustomer)).willReturn(outputCustomer);
 		
 		// When

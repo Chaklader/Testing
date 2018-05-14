@@ -1,24 +1,36 @@
-package com.multi;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
+import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.*;
 
+
 import org.hamcrest.Matcher;
 import org.junit.Test;
+import org.w3c.dom.Node;
+
+//import jdk.internal.org.xml.sax.InputSource;
+import org.xml.sax.InputSource;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
+import javax.xml.namespace.NamespaceContext;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 
+/*
+* Class containing comprehensive 
+* examples of Hamcrest matchers 
+*/
 public class HamcrestMatchers {
 
+
     /*
-     * any(): Matches any variable of the given type.
+     * any(): Matches any variable of the given type
      * */
     @Test
     public void test_any() throws Exception {
@@ -48,10 +60,10 @@ public class HamcrestMatchers {
      * array must match the number of matchers, and their order is
      * important.
      * */
-
     // Does the array contain all given items in the order in which they are input to the matcher?
     @Test
     public void test_arrayContaining_items() throws Exception {
+
         // Given
         String[] strings = {"why", "hello", "there"};
         // Then
@@ -61,15 +73,19 @@ public class HamcrestMatchers {
     // Does the array contain items which match the input list of matchers, in order?
     @Test
     public void test_arrayContaining_list_of_matchers() throws Exception {
+
         // Given
         String[] strings = {"why", "hello", "there"};
+
         // Then
-        java.util.List<org.hamcrest.Matcher<? super String>> itemMatchers = new ArrayList<>();
+        List<org.hamcrest.Matcher<? super String>> itemMatchers = new ArrayList<>();
         itemMatchers.add(equalTo("why"));
         itemMatchers.add(equalTo("hello"));
         itemMatchers.add(endsWith("here"));
+
         assertThat(strings, is(arrayContaining(itemMatchers)));
     }
+
 
     // Does the array contain items which match the input vararg matchers, in order?
     @Test
@@ -85,7 +101,6 @@ public class HamcrestMatchers {
      * arrayContainingInAnyOrder(): Various matchers for Arrays, length of the
      * array must match the number of matchers, but their order is not important.
      * */
-
     // Does the array contain all the given items?
     @Test
     public void test_arrayContainingInAnyOrder_items() throws Exception {
@@ -98,18 +113,21 @@ public class HamcrestMatchers {
     // Does the array contain items which match the input collection of Matchers?
     @Test
     public void test_arrayContainingInAnyOrder_collection_of_matchers() throws Exception {
+
         // Given
         String[] strings = {"why", "hello", "there"};
+
         // Then
         Set<Matcher<? super String>> itemMatchers = new HashSet<>();
         itemMatchers.add(equalTo("hello"));
         itemMatchers.add(equalTo("why"));
         itemMatchers.add(endsWith("here"));
+
         assertThat(strings, is(arrayContainingInAnyOrder(itemMatchers)));
     }
 
+
     // Does the array contain items which match the input vararg matchers?
-// view sourceprint?
     @Test
     public void test_arrayContainingInAnyOrder_matchers() throws Exception {
         // Given
@@ -123,44 +141,53 @@ public class HamcrestMatchers {
      * arrayWithSize(): Various matchers to check
      * if an array is of a certain length.
      * */
-// Does the input array have exactly the specified length?
+    // Does the input array have exactly the specified length?
     @Test
     public void test_arrayWithSize_exact() throws Exception {
+
         // Given
         String[] strings = {"why", "hello", "there"};
+
         // Then
         assertThat(strings, is(arrayWithSize(3)));
     }
 
+
     // Does the input array have a length which matches the specified matcher?
-// view sourceprint?
     @Test
     public void test_arrayWithSize_matcher() throws Exception {
+
         // Given
         String[] strings = {"why", "hello", "there"};
+
         // Then
         assertThat(strings, is(arrayWithSize(greaterThan(2))));
     }
+
 
     /*
      * closeTo(): Matcher which can be used with either Double or BigDecimal
      * to check if a value is within a specified error margin of an expected
      * value.
      * */
-// Double
     @Test
     public void test_closeTo_double() throws Exception {
+
         // Given
         Double testValue = 6.3;
+
         // Then
         assertThat(testValue, is(closeTo(6, 0.5)));
     }
 
+
     // BigDecimal
     @Test
     public void test_closeTo_bigDecimal() throws Exception {
+
         // Given
         BigDecimal testValue = new BigDecimal(324.0);
+
         // Then
         assertThat(testValue, is(closeTo(new BigDecimal(350), new BigDecimal(50))));
     }
@@ -196,30 +223,38 @@ public class HamcrestMatchers {
         assertThat(strings, contains("why", "hello", "there"));
     }
 
+
     // Does the input list contain items which match all of the matchers in the input matchers list, in order?
     @Test
     public void test_contains_list_of_matchers() throws Exception {
+
         // Given
         List<String> strings = Arrays.asList("why", "hello", "there");
+
         // Then
         List<org.hamcrest.Matcher<? super String>> matchers = new ArrayList<>();
         matchers.add(startsWith("wh"));
         matchers.add(endsWith("lo"));
         matchers.add(equalTo("there"));
+
         assertThat(strings, contains(matchers));
     }
+
 
     // Does the input list contain only one item which matches the input matcher?
     @Test
     public void test_contains_single_matcher() throws Exception {
+
         // Given
         List<String> strings = Arrays.asList("hello");
+
         // Then
         assertThat(strings, contains(startsWith("he")));
     }
 
-    // Does the input list contain items which match all of the matchers in the input vararg matchers, in order?
-// view sourceprint?
+
+    // Does the input list contain items which match all of 
+    // the matchers in the input vararg matchers, in order?
     @Test
     public void test_contains_matchers() throws Exception {
         // Given
@@ -228,12 +263,13 @@ public class HamcrestMatchers {
         assertThat(strings, contains(startsWith("why"), endsWith("llo"), equalTo("there")));
     }
 
+
     /*
     * containsInAnyOrder(): Various matchers which can be used to check if an input Iterable 
     * contains values. The order of the values is not important but the number of items in the 
     * Iterable must match the number of values being tested.
     * */
-// Does the input list contain all of the values, in any order?
+    // Does the input list contain all of the values, in any order?
     @Test
     public void test_containsInAnyOrder_items() throws Exception {
         // Given
@@ -242,25 +278,31 @@ public class HamcrestMatchers {
         assertThat(strings, containsInAnyOrder("hello", "there", "why"));
     }
 
+
     // Does the input list contain items which match all of the matchers in the input matchers list, in any order?
     @Test
     public void test_containsInAnyOrder_list_of_matchers() throws Exception {
+
         // Given
         List<String> strings = Arrays.asList("why", "hello", "there");
+
         // Then
         List<org.hamcrest.Matcher<? super String>> matchers = new ArrayList<>();
         matchers.add(equalTo("there"));
         matchers.add(startsWith("wh"));
         matchers.add(endsWith("lo"));
+
         assertThat(strings, containsInAnyOrder(matchers));
     }
 
+
     // Does the input list contain items which match all of the matchers in the input vararg matchers, in any order?
-    // view sourceprint?
     @Test
     public void test_containsInAnyOrder_matchers() throws Exception {
+
         // Given
         List<String> strings = Arrays.asList("why", "hello", "there");
+
         // Then
         assertThat(strings, containsInAnyOrder(endsWith("llo"), equalTo("there"), startsWith("why")));
     }
@@ -283,11 +325,12 @@ public class HamcrestMatchers {
     * empty(): Matcher which matches if an input 
     * Collections isEmpty() method returns true.
     * */
-// view sourceprint?
     @Test
     public void test_empty() throws Exception {
+        
         // Given
         Set<String> testCollection = new HashSet<>();
+        
         // Then
         assertThat(testCollection, is(empty()));
     }
@@ -299,12 +342,13 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_emptyArray() throws Exception {
+
         // Given
         String[] testArray = new String[0];
+
         // Then
         assertThat(testArray, is(emptyArray()));
     }
-
 
 
     /*
@@ -312,11 +356,12 @@ public class HamcrestMatchers {
     * if the input collection is of the given type and is 
     * empty.
     * */
-// view sourceprint?
     @Test
     public void test_emptyCollectionOf() throws Exception {
+
         // Given
         Set<String> testCollection = new HashSet<>();
+
         // Then
         assertThat(testCollection, is(emptyCollectionOf(String.class)));
     }
@@ -328,8 +373,10 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_emptyIterable() throws Exception {
+
         // Given
         Set<String> testCollection = new HashSet<>();
+
         // Then
         assertThat(testCollection, is(emptyIterable()));
     }
@@ -339,11 +386,12 @@ public class HamcrestMatchers {
     * emptyIterableOf(): Typesafe Matcher which matches if the 
     * input Iterable has no values and is of the given type.
     * */
-    // view sourceprint?
     @Test
     public void test_emptyIterableOf() throws Exception {
+
         // Given
         Set<String> testCollection = new HashSet<>();
+
         // Then
         assertThat(testCollection, is(emptyIterableOf(String.class)));
     }
@@ -378,15 +426,17 @@ public class HamcrestMatchers {
     }
 
     // Array.
-    // view sourceprint?
     @Test
     public void test_equalTo_array() throws Exception {
+
         // Given
         String[] testValues = {"why", "hello", "there"};
+
         // Then
         String[] specifiedValues = {"why", "hello", "there"};
         assertThat(testValues, equalTo(specifiedValues));
     }
+
 
     /*
     * equalToIgnoringCase(): Matcher which matches if the input 
@@ -424,19 +474,24 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_eventFrom() throws Exception {
+
         // Given
         Object source = new Object();
         EventObject testEvent = new EventObject(source);
+
         // Then
         assertThat(testEvent, is(eventFrom(source)));
     }
 
+
     // With subtype specified.
     @Test
     public void test_eventFrom_type() throws Exception {
+
         // Given
         Object source = new Object();
         EventObject testEvent = new MenuEvent(source);
+
         // Then
         assertThat(testEvent, is(eventFrom(MenuEvent.class, source)));
     }
@@ -461,8 +516,10 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_greaterThanOrEqualTo() throws Exception {
+
         // Given
         Integer testValue = 3;
+
         // Then
         assertThat(testValue, is(greaterThanOrEqualTo(3)));
     }
@@ -475,11 +532,15 @@ public class HamcrestMatchers {
     // Actual Values
     @Test
     public void test_hasEntry() throws Exception {
+
         // Given
         Integer testKey = 1;
         String testValue = "one";
+
         Map<Integer, String> testMap = new HashMap<>();
+
         testMap.put(testKey, testValue);
+
         // Then
         assertThat(testMap, hasEntry(1, "one"));
     }
@@ -487,11 +548,14 @@ public class HamcrestMatchers {
     // Matchers
     @Test
     public void test_hasEntry_matchers() throws Exception {
+
         // Given
         Integer testKey = 2;
         String testValue = "two";
+        
         Map<Integer, String> testMap = new HashMap<>();
         testMap.put(testKey, testValue);
+
         // Then
         assertThat(testMap, hasEntry(greaterThan(1), endsWith("o")));
     }
@@ -504,17 +568,22 @@ public class HamcrestMatchers {
     // Actual Value
     @Test
     public void test_hasItem() throws Exception {
+
         // Given
         List<Integer> testList = Arrays.asList(1, 2, 7, 5, 4, 8);
+
         // Then
         assertThat(testList, hasItem(4));
     }
 
+
     // Matcher
     @Test
     public void test_hasItem_matcher() throws Exception {
+
         // Given
         List<Integer> testList = Arrays.asList(1, 2, 7, 5, 4, 8);
+
         // Then
         assertThat(testList, hasItem(is(greaterThan(6))));
     }
@@ -528,17 +597,22 @@ public class HamcrestMatchers {
     // Actual Value
     @Test
     public void test_hasItemInArray() throws Exception {
+
         // Given
         Integer[] test = {1, 2, 7, 5, 4, 8};
+
         // Then
         assertThat(test, hasItemInArray(4));
     }
 
+
     // Matcher
     @Test
     public void test_hasItemInArray_matcher() throws Exception {
+
         // Given
         Integer[] test = {1, 2, 7, 5, 4, 8};
+
         // Then
         assertThat(test, hasItemInArray(is(greaterThan(6))));
     }
@@ -550,8 +624,10 @@ public class HamcrestMatchers {
     * */
     // Actual Values
     public void test_hasItems() throws Exception {
+
         // Given
         List<Integer> testList = Arrays.asList(1, 2, 7, 5, 4, 8);
+
         // Then
         assertThat(testList, hasItems(4, 2, 5));
     }
@@ -574,10 +650,12 @@ public class HamcrestMatchers {
     // Actual Value
     @Test
     public void test_hasKey() throws Exception {
+
         // Given
         Map<String, String> testMap = new HashMap<>();
         testMap.put("hello", "there");
         testMap.put("how", "are you?");
+
         // Then
         assertThat(testMap, hasKey("hello"));
     }
@@ -585,10 +663,12 @@ public class HamcrestMatchers {
     // Matcher
     @Test
     public void test_hasKey_matcher() throws Exception {
+
         // Given
         Map<String, String> testMap = new HashMap<>();
         testMap.put("hello", "there");
         testMap.put("how", "are you?");
+
         // Then
         assertThat(testMap, hasKey(startsWith("h")));
     }
@@ -643,11 +723,11 @@ public class HamcrestMatchers {
         assertThat(testList, hasSize(lessThan(10)));
     }
 
+
     /*
      * hasToString(): Matchers which match if the input Object’s toString()
      * method matches either the specified String or the input matcher.
      * */
-
     // Atual Value
     @Test
     public void test_hasToString() throws Exception {
@@ -657,29 +737,37 @@ public class HamcrestMatchers {
         assertThat(testValue, hasToString("4"));
     }
 
+
     // Matcher
     @Test
     public void test_hasToString_matcher() throws Exception {
+        
         // Given
         Double testValue = 3.14;
+
         // Then
         assertThat(testValue, hasToString(containsString(".")));
     }
+
 
     /*
      * hasValue(): Matchers which match if the input Map has at
      * least one value that matches the specified value or matcher.
      * */
+
     // Actual Value
     @Test
     public void test_hasValue() throws Exception {
+
         // Given
         Map<String, String> testMap = new HashMap<>();
         testMap.put("hello", "there");
         testMap.put("how", "are you?");
+
         // Then
         assertThat(testMap, hasValue("there"));
     }
+
 
     // Matcher
     @Test
@@ -693,97 +781,109 @@ public class HamcrestMatchers {
     }
 
 
+    /*
+    * hasXPath(): Matchers which match if the input XML
+    * DOM Node satisfies the input XPath expression
+    * */
+    // Does the Node contain a Node which matches the input XPath expression?
+    @Test
+    public void test_hasXPath() throws Exception {
+
+        // Given
+        DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        Node testNode = docBuilder.parse(
+                new InputSource(new StringReader("<xml><top><middle><bottom>value</bottom></middle></top></xml>")))
+                .getDocumentElement();
+
+        // Then
+        assertThat(testNode, hasXPath("/xml/top/middle/bottom"));
+    }
 
 
     /*
-    * hasXPath(): Matchers which match if the input XML 
-    * DOM Node satisfies the input XPath expression
-    * */
+    * Does the Node contain a Node which matches the input XPath 
+    * expression and does that Node have a value which matches the 
+    * specified matcher?
+    */
+    @Test
+    public void test_hasXPath_matcher() throws Exception {
+        // Given
+        DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        Node testNode = docBuilder.parse(
+                new InputSource(new StringReader("<xml><top><middle><bottom>value</bottom></middle></top></xml>")))
+                .getDocumentElement();
+        // Then
+        assertThat(testNode, hasXPath("/xml/top/middle/bottom", startsWith("val")));
+    }
 
-    // Does the Node contain a Node which matches the input XPath expression?
-//    @Test
-//    public void test_hasXPath() throws Exception {
-//        // Given
-//        DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-//        Node testNode = docBuilder.parse(
-//                new InputSource(new StringReader("<xml><top><middle><bottom>value</bottom></middle></top></xml>")))
-//                .getDocumentElement();
-//        // Then
-//        assertThat(testNode, hasXPath("/xml/top/middle/bottom"));
-//    }
 
-    
-    
-    
-    // Does the Node contain a Node which matches the input XPath expression and does that Node have a value which matches the specified matcher?
-//    @Test
-//    public void test_hasXPath_matcher() throws Exception {
-//        // Given
-//        DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-//        Node testNode = docBuilder.parse(
-//                new InputSource(new StringReader("<xml><top><middle><bottom>value</bottom></middle></top></xml>")))
-//                .getDocumentElement();
-//        // Then
-//        assertThat(testNode, hasXPath("/xml/top/middle/bottom", startsWith("val")));
-//    }
 
-    
-    
     // Does the Node contain a Node in the specified namespace which matches the input XPath expression?
-//    @Test
-//    public void test_hasXPath_namespace() throws Exception {
-//        // Given
-//        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-//        docFactory.setNamespaceAware(true);
-//        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-//        Node testNode = docBuilder.parse(
-//                new InputSource(new StringReader("<xml xmlns:prefix='http://namespace-uri'><top><middle><prefix:bottom>value</prefix:bottom></middle></top></xml>")))
-//                .getDocumentElement();
-//        NamespaceContext namespace = new NamespaceContext() {
-//            public String getNamespaceURI(String prefix) {
-//                return "http://namespace-uri";
-//            }
-//
-//            public String getPrefix(String namespaceURI) {
-//                return null;
-//            }
-//
-//            public Iterator<String> getPrefixes(String namespaceURI) {
-//                return null;
-//            }
-//        };
-//        // Then
-//        assertThat(testNode, hasXPath("//prefix:bottom", namespace));
-//    }
+    @Test
+    public void test_hasXPath_namespace() throws Exception {
 
-    
-    
+        // Given
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        docFactory.setNamespaceAware(true);
+
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+        Node testNode = docBuilder.parse(
+                new InputSource(new StringReader("<xml xmlns:prefix='http://namespace-uri'><top><middle><prefix:bottom>value</prefix:bottom></middle></top></xml>")))
+                .getDocumentElement();
+
+        NamespaceContext namespace = new NamespaceContext() {
+
+            public String getNamespaceURI(String prefix) {
+                return "http://namespace-uri";
+            }
+
+            public String getPrefix(String namespaceURI) {
+                return null;
+            }
+
+            public Iterator<String> getPrefixes(String namespaceURI) {
+                return null;
+            }
+        };
+
+        // Then
+        assertThat(testNode, hasXPath("//prefix:bottom", namespace));
+    }
+
+
     // Does the Node contain a Node in the specified namespace which matches the input XPath expression and does that Node have a value which matches the specified matcher?
-//    @Test
-//    public void test_hasXPath_namespace_matcher() throws Exception {
-//        // Given
-//        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-//        docFactory.setNamespaceAware(true);
-//        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-//        Node testNode = docBuilder.parse(
-//                new InputSource(new StringReader("<xml xmlns:prefix='http://namespace-uri'><top><middle><prefix:bottom>value</prefix:bottom></middle></top></xml>")))
-//                .getDocumentElement();
-//        NamespaceContext namespace = new NamespaceContext() {
-//            public String getNamespaceURI(String prefix) {
-//                return "http://namespace-uri";
-//            }
-//
-//            public String getPrefix(String namespaceURI) {
-//                return null;
-//            }
-//
-//            public Iterator<String> getPrefixes(String namespaceURI) {
-//                return null;
-//            }
-//        };
-//        // Then
-//        assertThat(testNode, hasXPath("//prefix:bottom", namespace, startsWith("val")));
-//    }
+    @Test
+    public void test_hasXPath_namespace_matcher() throws Exception {
+
+        // Given
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        docFactory.setNamespaceAware(true);
+
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+        Node testNode = docBuilder.parse(
+                new InputSource(new StringReader("<xml xmlns:prefix='http://namespace-uri'><top><middle><prefix:bottom>value</prefix:bottom></middle></top></xml>")))
+                .getDocumentElement();
+
+
+        NamespaceContext namespace = new NamespaceContext() {
+
+            public String getNamespaceURI(String prefix) {
+                return "http://namespace-uri";
+            }
+
+            public String getPrefix(String namespaceURI) {
+                return null;
+            }
+
+            public Iterator<String> getPrefixes(String namespaceURI) {
+                return null;
+            }
+        };
+
+        // Then
+        assertThat(testNode, hasXPath("//prefix:bottom", namespace, startsWith("val")));
+    }
+
 
 
     /*
@@ -792,8 +892,10 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_instanceOf() throws Exception {
+        
         // Given
         Object string = "Hello, World!";
+        
         // Then
         assertThat(string, instanceOf(String.class));
     }
@@ -805,9 +907,11 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_isEmptyOrNullString() throws Exception {
+
         // Given
         String emptyString = "";
         String nullString = null;
+
         // Then
         assertThat(emptyString, isEmptyOrNullString());
         assertThat(nullString, isEmptyOrNullString());
@@ -833,11 +937,14 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_isIn() throws Exception {
+
         // Given
         Set<Integer> set = new HashSet<>();
+        
         set.add(3);
         set.add(6);
         set.add(4);
+        
         // Then
         assertThat(4, isIn(set));
     }
@@ -966,8 +1073,8 @@ public class HamcrestMatchers {
     * values as the specified Bean, i.e. if there are properties on the Bean under test they
     * must exist, and have the same values as the bean being specified in the test condition.
     * */
-    // Given the following Java class:
     private class Bean {
+
         private Integer number;
         private String text;
 
@@ -1023,12 +1130,13 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_stringContainsInOrder() throws Exception {
+        
         // Given
         String test = "Rule number one: two's company, but three's a crowd!";
+        
         // Then
         assertThat(test, stringContainsInOrder(Arrays.asList("one", "two", "three")));
     }
-
 
 
     /*
@@ -1043,7 +1151,6 @@ public class HamcrestMatchers {
         // Then
         assertThat(one, theInstance(two));
     }
-
 
 
     /*
@@ -1075,6 +1182,7 @@ public class HamcrestMatchers {
         // Then
         assertThat(test, allOf(startsWith("start"), containsString("content"), endsWith("end")));
     }
+
 
     // Iterable of Matchers
     @Test
@@ -1161,21 +1269,25 @@ public class HamcrestMatchers {
     * */
     @Test
     public void test_is_matcher() throws Exception {
+        
         // Given
         Integer test = 5;
+        
         // Then
         assertThat(test, is(greaterThan(3)));
     }
 
+
     // Also used as an alias for is(equalTo(...)), similar to not(...) and not(equalTo(...))
     @Test
     public void test_is_value() throws Exception {
+
         // Given
         Integer test = 5;
+
         // Then
         assertThat(test, is(5));
     }
-
 
 
     /*

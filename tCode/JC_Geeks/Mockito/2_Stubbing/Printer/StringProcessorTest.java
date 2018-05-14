@@ -25,7 +25,7 @@ public class StringProcessorTest {
 	private SysoutPrinter sysoutPrinter;
 	
 	@Test
-	public void internalbuffershouldbeabsentafterconstruction() throws Exception {
+	public void internal_buffer_should_be_absent_after_construction() throws Exception {
 
 		// Given
 		StringProcessor processor = new StringProcessor(printer);
@@ -46,7 +46,8 @@ public class StringProcessorTest {
 		// When
 		Optional<String> actualBuffer = processor.statusAndTest();
 		
-		// Then
+		// Then, it will actually print buffer which is 
+		// undesiarable due to beaocme a spy 
 		assertFalse(actualBuffer.isPresent());
 	}
 	

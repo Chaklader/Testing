@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 
 public class CustomerDAO {
+
 	
 	@PersistenceContext
 	EntityManager em;
