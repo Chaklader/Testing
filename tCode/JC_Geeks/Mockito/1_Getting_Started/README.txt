@@ -1,16 +1,16 @@
 
 
-MOCK OBJECT REPLACE MOCKED CLASS ENTIRELY, RETURNING RECORDED OR DEFAULT VALUES. YOU CAN CREATE MOCK OUT OF "THIN AIR". THIS IS WHAT IS MOSTLY USED DURING UNIT TESTING.
+Mock object replace mocked class entirely, returning recorded or default values. You can create mock out of "Thin air". This is what is mostly used during unit testing.
 
-WHEN SPYING, YOU TAKE AN EXISTING OBJECT AND "REPLACE" ONLY SOME METHODS. THIS IS USEFUL WHEN YOU HAVE A HUGE CLASS AND ONLY WANT TO MOCK CERTAIN METHODS (PARTIAL MOCKING).
+When spying, you take an existing object and "Replace" only some methods. This is useful when you have a huge class and only want to mock certain methods (partial mocking).
 
 
-MOCK (NOUN) – AN OBJECT WHICH ACTS AS A DOUBLE FOR ANOTHER OBJECT. MOCK (VERB) – TO CREATE A MOCK OBJECT OR STUB A METHOD.
+Mock (noun) – an object which acts as a double for another object. Mock (verb) – to create a mock object or stub a method.
 
-SPY (NOUN) – AN OBJECT WHICH DECORATES AN EXISTING OBJECT AND ALLOWS FOR STUBBING OF METHODS OF THAT OBJECT AND VERIFICATION OF CALLS INTO THAT OBJECT.
+Spy (noun) – an object which decorates an existing object and allows for stubbing of methods of that object and verification of calls into that object.
 
-SPY (VERB) – TO CREATE AND USE A SPY OBJECT.
+Spy (verb) – to create and use a spy object.
 
-STUB (NOUN) – AN OBJECT WHICH CAN PROVIDE ‘CANNED ANSWERS’ WHEN IT’S METHODS ARE CALLED. STUB (VERB) – TO CREATE A CANNED ANSWER.
+Stub (noun) – an object which can provide ‘canned answers’ when it’s methods are called. Stub (verb) – to create a canned answer.
 
-PARTIAL MOCK, PARTIAL STUB (VERB) – ANOTHER TERM FOR A SPY WITH SOME OF IT’S METHODS STUBBED.
+Partial mock, partial stub (verb) – another term for a spy with some of it’s methods stubbed.

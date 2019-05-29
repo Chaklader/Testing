@@ -2,7 +2,9 @@ package com.javacodegeeks.hughwphamill.mockito.stubbing;
 
 import java.util.Optional;
 
+
 public class StringProcessor {
+
 	
 	private Printer printer;
 	private String currentBuffer;

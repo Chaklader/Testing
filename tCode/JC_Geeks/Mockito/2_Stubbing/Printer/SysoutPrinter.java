@@ -1,5 +1,6 @@
 package com.javacodegeeks.hughwphamill.mockito.stubbing;
 
+
 public class SysoutPrinter implements Printer {
 
 	@Override

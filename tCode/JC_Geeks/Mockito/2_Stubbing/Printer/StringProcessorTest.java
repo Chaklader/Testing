@@ -14,10 +14,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.javacodegeeks.hughwphamill.mockito.stubbing.Printer;
 import com.javacodegeeks.hughwphamill.mockito.stubbing.StringProcessor;
 
+
+
+
 @RunWith(MockitoJUnitRunner.class)
 public class StringProcessorTest {
 
-	
 	@Mock
 	private Printer printer;
 
@@ -27,13 +29,9 @@ public class StringProcessorTest {
 	@Test
 	public void internal_buffer_should_be_absent_after_construction() throws Exception {
 
-		// Given
 		StringProcessor processor = new StringProcessor(printer);
-		
-		// When
 		Optional<String> actualBuffer = processor.statusAndTest();
 		
-		// Then
 		assertFalse(actualBuffer.isPresent());
 	}
 	
@@ -54,19 +52,18 @@ public class StringProcessorTest {
 	@Test
 	public void internalbuffershouldbeabsentafterconstructionsysoutwithdonothing() throws Exception {
 		
-		// Given
 		StringProcessor processor = new StringProcessor(sysoutPrinter);
 		doNothing().when(sysoutPrinter).printTestPage();
 		
-		// When
 		Optional<String> actualBuffer = processor.statusAndTest();
 		
-		// Then
 		assertFalse(actualBuffer.isPresent());
 	}
+
 	
 	@Test(expected = PrinterNotConnectedException.class)
 	public void printernotconnectedexceptionshouldbethrownupthestack() throws Exception {
+
 		// Given
 		StringProcessor processor = new StringProcessor(printer);
 		doThrow(new PrinterNotConnectedException()).when(printer).printTestPage();
@@ -77,4 +74,10 @@ public class StringProcessorTest {
 		// Then
 		assertFalse(actualBuffer.isPresent());
 	}
+
 }
+
+
+
+
+

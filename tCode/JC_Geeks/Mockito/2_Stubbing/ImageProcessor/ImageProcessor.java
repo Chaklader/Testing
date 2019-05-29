@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 
+
 public class ImageProcessor {
 
 
@@ -52,4 +53,8 @@ public class ImageProcessor {
 			System.out.println(String.format("Colorspace Component[%d]: %s", i, componentName));
 		}
 	}
+
 }
+
+
+

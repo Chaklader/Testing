@@ -21,13 +21,15 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
 
+
+
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerDAOTest {
 
 	
-	private CustomerDAO dao;
-	
+	private CustomerDAO dao;	
 	private Customer homerSimpson, bruceWayne, tyrionLannister;
+
 	private Answer<Customer> withCustomerById = new Answer<Customer>() {
 
 		@Override
@@ -50,6 +52,7 @@ public class CustomerDAOTest {
 		}
 	};
 	
+
 	@Mock
 	private EntityManager mockEntityManager;
 	
@@ -58,11 +61,13 @@ public class CustomerDAOTest {
 
 	@Before
 	public void setUp() throws Exception {
+
 		dao = new CustomerDAO(mockEntityManager);
 		setupCustomers();
 	}
 
 	private void setupCustomers() {
+
 		homerSimpson = new Customer(1, "Homer Simpson", "Springfield");
 		bruceWayne = new Customer(2, "Bruce Wayne", "Gotham City");
 		tyrionLannister = new Customer(2, "Tyrion Lannister", "Kings Landing");		
@@ -74,6 +79,7 @@ public class CustomerDAOTest {
 
 		// Given
 		long expectedId = 10L;
+
 		String expectedName = "John Doe";
 		String expectedAddress = "21 Main Street";
 		Customer expectedCustomer = new Customer(expectedId, expectedName, expectedAddress);
@@ -121,11 +127,13 @@ public class CustomerDAOTest {
 		String expectedName1 = "John Doe";
 		String expectedAddress1 = "21 Main Street";
 		Customer expectedCustomer1 = new Customer(expectedId1, expectedName1, expectedAddress1);
+
 		
 		long expectedId2 = 20L;
 		String expectedName2 = "Jane Deer";
 		String expectedAddress2 = "46 High Street";
 		Customer expectedCustomer2 = new Customer(expectedId2, expectedName2, expectedAddress2);
+
 		
 		when(mockEntityManager.find(Customer.class, expectedId1)).thenReturn(expectedCustomer1);
 		when(mockEntityManager.find(Customer.class, expectedId2)).thenReturn(expectedCustomer2);
@@ -178,6 +186,7 @@ public class CustomerDAOTest {
 		// Then
 		assertFalse(actualCustomer.isPresent());
 	}
+
 	
 	@Test
 	public void findingcustomershouldrespondappropriately() throws Exception {
@@ -252,9 +261,11 @@ public class CustomerDAOTest {
 		assertEquals(expectedName, actualCustomer.get().getName());
 		assertEquals(expectedAddress, actualCustomer.get().getAddress());
 	}
+
 	
 	@Test
 	public void findingallcustomersshouldreturnallcustomers() throws Exception {
+
 		// Given
 		given(mockQuery.getResultList()).willAnswer(i -> Arrays.asList(homerSimpson, bruceWayne, tyrionLannister));
 		given(mockEntityManager.createQuery(anyString(), eq(Customer.class))).willReturn(mockQuery);
@@ -265,6 +276,7 @@ public class CustomerDAOTest {
 		// Then
 		assertEquals(actualCustomers.size(), 3);		
 	}
+
 	
 	@Test
 	public void updatingcustomershouldresultinlatestversionfromdbbeingreturned() throws Exception {

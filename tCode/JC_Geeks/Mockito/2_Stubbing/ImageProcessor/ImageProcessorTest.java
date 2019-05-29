@@ -19,6 +19,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class ImageProcessorTest {
 
+
 	private ImageProcessor processor;
 	
 	@Spy
@@ -31,9 +32,11 @@ public class ImageProcessorTest {
 	public void setup() {
 		processor = new ImageProcessor(imageSpy);	
 	}
+
 	
 	@Test
-	public void scaleshouldreturninternalimagescaled() throws Exception {
+	public void scaleShouldReturnInternalImagesCalled() throws Exception {
+
 		// Given
 		given(imageSpy.getScaledInstance(-1, 100, Image.SCALEFAST)).willReturn(mockThumbnail);
 		
@@ -43,14 +46,17 @@ public class ImageProcessorTest {
 		// Then
 		assertEquals(actualImage, mockThumbnail);
 	}
+
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void throwsexception() throws Exception {
+
 		// Given
 		given(imageSpy.getScaledInstance(anyInt(), anyInt(), anyInt())).willReturn(mockThumbnail);
 		
 		// Immediate IllegalArgumentException
 	}
+
 	
 	@Test
 	public void scaleshouldreturninternalimagescaleddoReturn() throws Exception {
